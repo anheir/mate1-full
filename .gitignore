@@ -7,8 +7,8 @@
 #include source file(s)
 #add any relevant file that is not generated
 !/mate1-full.tex
+!/mate1-full.pdf
 !/README.md
 
 #include figure files
-!/media/*.png
-!/media/*.pdf
+!/media/*.*
