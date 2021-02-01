@@ -1,0 +1,14 @@
+#exclude all files
+*
+
+#include ignore file
+!/.gitignore
+
+#include source file(s)
+#add any relevant file that is not generated
+!/mate1-full.tex
+!/README.md
+
+#include figure files
+!/media/*.png
+!/media/*.pdf
