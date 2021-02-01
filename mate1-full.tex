@@ -66,14 +66,14 @@
 
 \begin{abstract}
 	Usar el presente material a modo de refuerzo y/o repaso de los contenidos; no contiene ninguna justificación 
-	teórica profunda. Fue realizado principalmente a modo de práctica para con \LaTeX. Cualquier sugerencia, correción
-	y/o similar, \href{mailto:aheir@itba.edu.ar}{es bienvenida}.
+	teórica profunda. Fue realizado principalmente a modo de práctica para con \LaTeX.\\
+	Cualquier sugerencia, correción y/o similar, es bienvenida: \href{mailto:aheir@itba.edu.ar}{aheir@itba.edu.ar}.\\
+	Se adjunta link al repositorio en GitHub del documento: 
+	\href{https://github.com/anheir/mate1-full}{github.com/anheir/mate1-full} 
 \end{abstract}
 
 \tableofcontents
-\newpage
 \listoffigures
-\newpage
 \listoftables
 %\setcounter{tocdepth}{4}
 %\setcounter{secnumdepth}{4}
@@ -167,6 +167,7 @@ Sea $\lim_{x \to a} |f(x)| = 0$, y sabiendo que $-|f(x)| \leq f(x) \leq |f(x)|$,
 		\item $ \displayLim{x}{\infty} k + x = \infty$, \quad con $ k \in \mathbb{R} $
 	\end{enumerate}
 \end{multicols}
+
 
 \vspace{1cm}
 \section{Continuidad}
@@ -309,6 +310,7 @@ entonces
 	f\left((a,b)\right) = \mathbb{R}, \ \therefore \ f \ \text{\emph{es sobreyectiva}}
 \end{equation*}
 
+
 \vspace{1cm}
 \section{Derivadas}
 
@@ -447,32 +449,89 @@ Sea $f: (a,b) \to \mathbb{R} / f$ alcanza un extremo en un $x_0 \in (a,b)$, ento
 
 \subsection{Teorema de Rolle - T.R.}
 \begin{commBoxy}
-	\littleTitle{Hipótesis}\par
+	\littleTitle{Hipótesis}
 	\begin{itemize}
 		\item $f: [a,b] \to \mathbb{R}$ continua; derivable en $(a,b)$.
-		\item $\boldsymbol{f(a) = f(b)}$
+		\item $f(a) = f(b)$
 	\end{itemize}
 	
 	\littleTitle{Tesis}
-	\begin{gather}
-		\exists c \in (a,b) / f'(c) = 0, \qquad \text{se afirma al menos unas raiz de $f'$}
-	\end{gather}
+	\begin{gather*}
+		\boldsymbol{\exists c \in (a,b) / f'(c) = 0}, \quad \text{\emph{se afirma al menos unas raiz de }$f'$}
+	\end{gather*}
 \end{commBoxy}
+
+\subsection{Coroladio del Teorema de Rolle - C.T.R.}
+\begin{commBoxy}
+	\littleTitle{Hipótesis}
+	\begin{itemize}
+		\item $f$ continua en $\underbrace{[a,b]}_{(a,b)}$; derivable en $(a,b)$.
+		\item $f'(x) = 0$ tiene exactamente $k$ soluciones en $(a,b)$
+	\end{itemize}
+
+	\littleTitle{Tesis}\par
+	\begin{center}
+		$f(x) = 0$ tiene \emph{como máximo} $k + 1$ soluciones en $\underbrace{[a,b]}_{(a,b)}$
+	\end{center}
+\end{commBoxy}
+
+\subsection{Aplicaciones del C.T.R.}
+\subsubsection{Afirmar inyectividad de una función}
+Sea $f$ continua en $\underbrace{[a,b]}_{(a,b)}$, derivable en $(a,b)$, $f'(x) \neq 0 \ \forall x \in (a,b)$, entonces
+\begin{center}
+	{\Large $f$ es inyectiva en $\underbrace{[a,b]}_{(a,b)}$} \\
+	\emph{"Si la derivada no se anula $\Rightarrow f$ es inyectiva"}
+\end{center}
+
+\subsubsection{Determinar raíces de una función}
+
+\subsection{Teorema del Valor Medio de Lagrange - T.V.M.L.}
+
+\subsection{Corolarios del T.V.M.L.}
+\subsubsection{Corolario I}
+
+\subsubsection{Corolario II}
+
+\subsubsection{Corolario III}
+
+\subsubsection{T.V.M.L. para desigualdades}
+
+\subsection{Teorema del Valor Medio de Cauchy}
+
+\subsection{Regla de L'Hospital}
 
 
 
 \newpage
 \part{Segundo Parcial}
 
+\section{Aplicaciones de la Derivada}
+
+
+\vspace{1cm}
+\section{Polinomios de Taylor}
+
+
+\vspace{1cm}
+\section{Integral Indefinida - Primitivas}
+
+
+\vspace{1cm}
+\section{Integral Definida}
+
+
+\vspace{1cm}
+\section{Aplicaciones de la Integral}
+
 
 \appendix
 \begin{appendices}
 	\section{Trigonometría 1}
 	\clearpage
-	%\includepdf[pages=-]{Trig_Cheat_Sheet.pdf}
+	\includepdf[pages=-]{Trig_Cheat_Sheet.pdf}
 	\section{Trigonometría 2}
 	\clearpage
-	%\includepdf[pages=-]{FormulaSheet.pdf}
+	\includepdf[pages=-]{FormulaSheet.pdf}
 \end{appendices}
 
 
