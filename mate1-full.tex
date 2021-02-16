@@ -59,7 +59,6 @@
 	{\Huge Resumen Práctico \par}
 	\vspace{2cm}
 	{\ttfamily Alejandro Nahuel Heir \par}
-	{\ttfamily \href{mailto:aheir@itba.edu.ar}{aheir@itba.edu.ar} \par}
 	\vspace{0.5cm}
 	{\ttfamily 2021 \par}
 \end{titlepage}
@@ -67,7 +66,7 @@
 \begin{abstract}
 	Usar el presente material a modo de refuerzo y/o repaso de los contenidos; no contiene ninguna justificación 
 	teórica profunda. Fue realizado principalmente a modo de práctica para con \LaTeX.\\
-	Cualquier sugerencia, correción y/o similar, es bienvenida: \href{mailto:aheir@itba.edu.ar}{aheir@itba.edu.ar}.\\
+	Cualquier sugerencia, correción y/o similar, es bienvenida: \href{mailto:aheir@itba.edu.ar}{aheir@itba.edu.ar}\\
 	Se adjunta link al repositorio en GitHub del documento: 
 	\href{https://github.com/anheir/mate1-full}{github.com/anheir/mate1-full} 
 \end{abstract}
@@ -248,7 +247,7 @@ $a \in \mathbb{R}$ es discontinuidad esencial de otro tipo si no es ninguna de l
 
 \pagebreak
 
-\subsection{Teorema de Bolzano - T.B.}
+\subsection{Teorema de Bolzano - T.B.} \label{uso_bolzano}
 \begin{commBoxy}
 	Si $f$ es continua en $[a,b]$, y $f(a)f(b) < 0$ (\emph{tienen signos opuestos}), entonces 
 	\begin{equation}
@@ -257,7 +256,7 @@ $a \in \mathbb{R}$ es discontinuidad esencial de otro tipo si no es ninguna de l
 \end{commBoxy}
 Si $f$ es continua en un intervalo abierto $\left(a,b\right)$, se debe cumplir que $\commLim{x}{a^{+}} f(x) = f(a)$, y que $\commLim{x}{b^{-}} f(x) = f(b).$
 
-\subsubsection{Uso}
+\subsubsection{Uso} \label{usobolzano}
 \littleTitle{Hallar raíces mínimas de una función}\par
 Dada una $f(x)$ igualada a $0$, continua en un intervalo dado, hallar por tanteo dos valores de $x$ (que pertenezcan 
 al intervalo donde $f$ es continua) para los cuales $f(x)$ tenga \emph{distinto signo}. Luego, por \emph{T.B.}, esa 
@@ -436,7 +435,7 @@ Sea $f: (a,b) \to \mathbb{R} / f$ alcanza un extremo en un $x_0 \in (a,b)$, ento
 	\nexists f'(x_0) \qquad \text{ó} \qquad f'(x_0) = 0
 \end{gather}
 
-\subsection{Teorema de Weierstrass - T.W.}
+\subsection{Teorema de Weierstra\ss - T.W.}
 \begin{commBoxy}
 	Sea $f: [a,b] \to \mathbb{R}$ continua, \emph{entonces} $f$ alcanza un $M$ (máximo) y $m$ (mínimo) en $[a,b]$.
 	Además, por \emph{T.V.I.}:
@@ -457,49 +456,117 @@ Sea $f: (a,b) \to \mathbb{R} / f$ alcanza un extremo en un $x_0 \in (a,b)$, ento
 	
 	\littleTitle{Tesis}
 	\begin{gather*}
-		\boldsymbol{\exists c \in (a,b) / f'(c) = 0}, \quad \text{\emph{se afirma al menos unas raiz de }$f'$}
+		\exists c \in (a,b) / f'(c) = 0, \qquad \text{\emph{se afirma al menos unas raiz de }$f'$}
 	\end{gather*}
 \end{commBoxy}
 
-\subsection{Coroladio del Teorema de Rolle - C.T.R.}
+\subsection{Corolario del Teorema de Rolle - C.T.R.} \label{ctr}
 \begin{commBoxy}
 	\littleTitle{Hipótesis}
 	\begin{itemize}
-		\item $f$ continua en $\underbrace{[a,b]}_{(a,b)}$; derivable en $(a,b)$.
+		\item $f$ continua en $e{[a,b]}_{(a,b)}$; derivable en $(a,b)$.
 		\item $f'(x) = 0$ tiene exactamente $k$ soluciones en $(a,b)$
 	\end{itemize}
 
 	\littleTitle{Tesis}\par
 	\begin{center}
-		$f(x) = 0$ tiene \emph{como máximo} $k + 1$ soluciones en $\underbrace{[a,b]}_{(a,b)}$
+		$f(x) = 0$ tiene \emph{como máximo} $k + 1$ soluciones en ${[a,b]}_{(a,b)}$
 	\end{center}
 \end{commBoxy}
 
 \subsection{Aplicaciones del C.T.R.}
 \subsubsection{Afirmar inyectividad de una función}
-Sea $f$ continua en $\underbrace{[a,b]}_{(a,b)}$, derivable en $(a,b)$, $f'(x) \neq 0 \ \forall x \in (a,b)$, entonces
+Sea $f$ continua en ${[a,b]}_{(a,b)}$, derivable en $(a,b)$, $f'(x) \neq 0 \ \forall x \in (a,b)$, entonces
 \begin{center}
-	{\Large $f$ es inyectiva en $\underbrace{[a,b]}_{(a,b)}$} \\
+	\vspace{0.25cm}
+	$f$ es inyectiva en ${[a,b]}_{(a,b)}$ \\
+	\vspace{0.25cm}
 	\emph{"Si la derivada no se anula $\Rightarrow f$ es inyectiva"}
 \end{center}
 
 \subsubsection{Determinar raíces de una función}
+Consiste en tomar una función igualada a $0$, buscar sus soluciones máximas con \emph{C.T.R.} (\ref{ctr}), y luego 
+las soluciones mínimas con \emph{T.B.} (\ref{uso_bolzano}). Si el número de ambas soluciones coinicide (\emph{debería}), 
+\begin{center}
+	$\therefore$ se tiene la cantidad exacta de soluciones.
+\end{center} \par
+Es posible que para hallar las soluciones de $f'(x) = 0$ haya que aplicarle \emph{T.B.} a $f'$ y \emph{C.T.R.} 
+a $f''$, y concluir en el número de soluciones de $f'(x) = 0$, para luego, recién, tener soluciones máximas de 
+$f(x) = 0$.
 
-\subsection{Teorema del Valor Medio de Lagrange - T.V.M.L.}
+\subsection{Teorema del Valor Medio de Lagrange - T.V.M.L.} \label{tvml}
+\begin{commBoxy}
+	\littleTitle{Hipótesis}
+	\begin{itemize}
+		\item $f$ continua en $[a,b]$, derivable en $(a,b)$.
+	\end{itemize}
+
+	\littleTitle{Tesis}
+	\begin{gather*}
+		\underbrace{\exists c \in (a,b)}_{\text{al menos uno}} / \frac{f(b) - f(a)}{b - a} = f'(c) 
+	\end{gather*}
+\end{commBoxy}
 
 \subsection{Corolarios del T.V.M.L.}
 \subsubsection{Corolario I}
+Sea $f$ continua en ${[a,b]}_{(a,b)}$, $f'(x) = 0 \ \forall x \in (a,b)$
+\begin{gather*}
+	\Rightarrow \ f \ \text{es constante} \quad (f(x) = k \in \mathbb{R}) \quad \forall x \in {[a,b]}_{(a,b)}
+\end{gather*}
 
 \subsubsection{Corolario II}
+Sean $f$ y $g$ derivables en $(a,b)$, $f'(x) = g'(x) \ \forall x \in (a,b)$
+\begin{gather*}
+	\Rightarrow \ \exists k \in \mathbb{R} / g(x) = f(x) + k, \ \forall x \in (a,b)
+\end{gather*}
 
-\subsubsection{Corolario III}
+\subsubsection{Corolario III \footnotesize{(para desiguldades entre funciones)}}
+\begin{commBoxy}
+	\littleTitle{Hipótesis}
+	\begin{itemize}
+		\item $f$ y $g$ continuas en ${[a,b]}_{[a,b)}$, derivables en $(a,b)$.
+		\item $f(a) \leq g(a)$
+		\item $f'(x) < g'(x), \ \forall x \in (a,b)$
+	\end{itemize}
+
+	\littleTitle{Tesis}
+	\begin{gather*}
+		f(x) < g(x), \ \forall x \in {(a,b]}_{(a,b)}
+	\end{gather*}
+\end{commBoxy}
 
 \subsubsection{T.V.M.L. para desigualdades}
+Tomar un $f(x)$, aplicarle \emph{T.V.M.L.} (\ref{tvml}) \comillas{entre a y b}, acotar la $f'(c)$ (ya que $c \in (a,b)$, (o 
+usar lo que convenga)).\par
+\comillas{Desarrollar}; evaluar $f'(x)$ en $c$ y usar las acotaciones; \comillas{acotando $f'(c)$ se prueban 
+desigualdades}.
 
 \subsection{Teorema del Valor Medio de Cauchy}
+\begin{commBoxy}
+	\littleTitle{Hipótesis}
+	\begin{itemize}
+		\item $f$ y $g$ continuas en $[a,b]$, derivables en $(a,b)$.
+		\item $g'(x) \neq 0 \ \forall x \in (a,b)$ \footnotesize(implicando que $g$ es inyectiva)
+	\end{itemize}
+
+	\littleTitle{Tesis}
+	\begin{gather*}
+		\exists c \in (a,b) / \frac{f(b) - f(a)}{g(b) - g(a)} = \frac{f'(c)}{g'(c)} \\ 
+		\text{\footnotesize (generalización del \emph{T.V.M.L.})}
+	\end{gather*}
+\end{commBoxy}
 
 \subsection{Regla de L'Hospital}
-
+Sean $f$ y $g$ derivables en $E^{*}_{(a,r)} = (a - r, a + r) - \{a\}$, y
+\begin{align*}
+	\text{1°}& \ \ \ \ \commLim{x}{a} f(x) = \commLim{x}{a} g(x) = 0 &\text{o} \qquad &\commLim{x}{a} f(x) = 
+	\commLim{x}{a} g(x) = \infty \\
+	\text{2°}& \ \ \ \ g'(x) \neq 0 \ \forall x \in E^{*}_{(a,r)} &\text{y} \qquad &\commLim{x}{a} \frac{f'(x)}{g'(x)} = L, \ L \in
+	\mathbb{R} \lor L = \infty
+\end{align*}
+\begin{gather*}
+	\Rightarrow \commLim{x}{a} \frac{f(x)}{g(x)} = \commLim{x}{a} \frac{f'(x)}{g'(x)} = L
+\end{gather*}
 
 
 \newpage
@@ -523,7 +590,7 @@ Sea $f$ continua en $\underbrace{[a,b]}_{(a,b)}$, derivable en $(a,b)$, $f'(x) \
 \vspace{1cm}
 \section{Aplicaciones de la Integral}
 
-
+\newpage
 \appendix
 \begin{appendices}
 	\section{Trigonometría 1}
