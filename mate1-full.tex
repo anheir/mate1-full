@@ -10,6 +10,11 @@
 \usepackage[titletoc]{appendix}
 \usepackage{csquotes}
 
+\usepackage{etoolbox}
+\newbool{DEBUG}
+\booltrue{DEBUG}
+%\boolfalse{DEBUG}
+
 \usepackage{amsmath,mathtools,cancel,multicol}
 \usepackage{graphicx,booktabs,tabularx,amssymb,amsfonts}
 \graphicspath{{./media/}}
@@ -17,6 +22,9 @@
 \usepackage{pdfpages}
 
 \usepackage{verbatim}
+
+\usepackage{color,soul}
+%\sethlcolor{orange}
 
 \usepackage{tcolorbox}
 \newtcolorbox{commBoxy}{
@@ -63,12 +71,17 @@
 	{\ttfamily 2021 \par}
 \end{titlepage}
 
+\renewcommand{\abstractname}{\LARGE Disclaimer}
 \begin{abstract}
-	Usar el presente material a modo de refuerzo y/o repaso de los contenidos; no contiene ninguna justificación 
-	teórica profunda. Fue realizado principalmente a modo de práctica para con \LaTeX.\\
-	Cualquier sugerencia, correción y/o similar, es bienvenida: \href{mailto:aheir@itba.edu.ar}{aheir@itba.edu.ar}\\
-	Se adjunta link al repositorio en GitHub del documento: 
-	\href{https://github.com/anheir/mate1-full}{github.com/anheir/mate1-full} 
+	Usar el presente material a modo de refuerzo y/o repaso de los contenidos.\\
+	No contiene ninguna justificación teórica.\\
+	Fue realizado principalmente a modo de práctica para con \LaTeX.\\
+	Al final del documento se encuentran dos PDF \textbf{de terceros} sobre trigonometría, útiles para las identidades.\\
+	Cualquier sugerencia, correción o similar sobre los contenidos y/o formato del documento, es bienvenida: %
+	\href{mailto:aheir@itba.edu.ar}{aheir@itba.edu.ar}.\\
+	Las actualizaciones del documento pueden encontrarse en su %
+	\href{https://github.com/anheir/mate1-full}{repositorio} en GitHub
+	
 \end{abstract}
 
 \tableofcontents
@@ -263,7 +276,7 @@ al intervalo donde $f$ es continua) para los cuales $f(x)$ tenga \emph{distinto 
 función tendrá \emph{al menos} una raíz entre esos dos valores de $x$ elegidos.\par
 Cabe resaltar que esto puede emplearse también para conocer soluciones mínimas de una ecuación igualada a $0$.
 
-\subsection{Corolario del Teorema de Bolzano - C.T.B.}
+\subsection{Corolario del Teorema de Bolzano - C.T.B.} \label{ctb}
 \begin{commBoxy}
 	Sea $f$ continua en $(a,b)$, con $f(x) \neq 0 \ \forall x \in (a,b)$, entonces $f$ mantiene su signo en $(a,b)$. Es decir:
 	\begin{equation}
@@ -435,7 +448,7 @@ Sea $f: (a,b) \to \mathbb{R} / f$ alcanza un extremo en un $x_0 \in (a,b)$, ento
 	\nexists f'(x_0) \qquad \text{ó} \qquad f'(x_0) = 0
 \end{gather}
 
-\subsection{Teorema de Weierstra\ss - T.W.}
+\subsection{Teorema de Weierstrass - T.W.} \label{tw}
 \begin{commBoxy}
 	Sea $f: [a,b] \to \mathbb{R}$ continua, \emph{entonces} $f$ alcanza un $M$ (máximo) y $m$ (mínimo) en $[a,b]$.
 	Además, por \emph{T.V.I.}:
@@ -485,8 +498,8 @@ Sea $f$ continua en ${[a,b]}_{(a,b)}$, derivable en $(a,b)$, $f'(x) \neq 0 \ \fo
 \end{center}
 
 \subsubsection{Determinar raíces de una función}
-Consiste en tomar una función igualada a $0$, buscar sus soluciones máximas con \emph{C.T.R.} (\ref{ctr}), y luego 
-las soluciones mínimas con \emph{T.B.} (\ref{uso_bolzano}). Si el número de ambas soluciones coinicide (\emph{debería}), 
+Consiste en tomar una función igualada a $0$, buscar sus soluciones máximas con \hyperref[ctr]{\emph{C.T.R.}}, y luego 
+las soluciones mínimas con \hyperref[uso_bolzano]{\emph{T.B.}}. Si el número de ambas soluciones coinicide (\emph{debería}), 
 \begin{center}
 	$\therefore$ se tiene la cantidad exacta de soluciones.
 \end{center} \par
@@ -536,7 +549,7 @@ Sean $f$ y $g$ derivables en $(a,b)$, $f'(x) = g'(x) \ \forall x \in (a,b)$
 \end{commBoxy}
 
 \subsubsection{T.V.M.L. para desigualdades}
-Tomar un $f(x)$, aplicarle \emph{T.V.M.L.} (\ref{tvml}) \comillas{entre a y b}, acotar la $f'(c)$ (ya que $c \in (a,b)$, (o 
+Tomar un $f(x)$, aplicarle \hyperref[tvml]{\emph{T.V.M.L.}} \comillas{entre a y b}, acotar la $f'(c)$ (ya que $c \in (a,b)$, (o 
 usar lo que convenga)).\par
 \comillas{Desarrollar}; evaluar $f'(x)$ en $c$ y usar las acotaciones; \comillas{acotando $f'(c)$ se prueban 
 desigualdades}.
@@ -573,7 +586,136 @@ Sean $f$ y $g$ derivables en $E^{*}_{(a,r)} = (a - r, a + r) - \{a\}$, y
 \part{Segundo Parcial}
 
 \section{Aplicaciones de la Derivada}
+\subsection{Asíntotas}
+\subsubsection{Horizontales}
+Son de la forma $y = k \in \mathbb{R}$; tomar $\displayLim{x}{\infty} f(x)$
 
+\subsubsection{Verticales}
+Son de la forma $x = k \in \mathbb{R}$; tomar $\displayLim{x}{x_0} f(x)$, con $x_0 \notin Dom(f)$
+
+\subsubsection{Oblicuas}
+Son de la forma $y = mx + b$.
+\begin{itemize}
+	\item Si $\exists m \ \Rightarrow \ m = \displayLim{x}{\infty} \frac{f(x)}{x} \qquad (m \in \mathbb{R}, \ m \neq \pm \infty)$
+	\item Si $\exists b \ \Rightarrow \ b = \displayLim{x}{\infty} (f(x) - mx) \qquad (b \in \mathbb{R})$
+\end{itemize}
+
+\subsection{Monotonía \footnotesize (implica inyectividad)}
+\begin{center}
+	$f$ es monótona en $I$ $\Leftrightarrow$ es estríctamente creciente o decreciente en $I$
+\end{center} 
+\littleTitle{Teorema} \par
+Sea $f$ continua en $I = {[a,b]}_{(a,b)}$ y derivable en $(a,b)$
+\begin{enumerate}[label=\alph*.]
+	\item Si $f'(x) > 0 \quad \forall x \in (a,b) \ \Rightarrow \ f$ es \emph{estríctamente creciente} en $I = %
+	{[a,b]}_{(a,b)}$
+	\item Si $f'(x) < 0 \quad \forall x \in (a,b) \ \Rightarrow \ f$ es \emph{estríctamente decreciente} en $I = %
+	{[a,b]}_{(a,b)}$
+\end{enumerate} 
+\begin{center}
+	\footnotesize (de ser necesario, usar \hyperref[ctb]{\emph{C.T.B.}} para asegurar signo de $f'$ en diferentes intervalos)
+\end{center}
+
+\subsection{Extremos locales o relativos}
+$f$ alcanza un $M$ (máximo) o $m$ (mínimo) local en $x_0$ si
+\begin{gather*}
+	\exists \delta > 0 \ / \ f(x_0) \ \underbrace{\geq_{\scriptscriptstyle(M)}}_{\leq_{\scriptscriptstyle(m)}} f(x) \quad \forall x \in (x_0 - \delta, x_0 + \delta)
+\end{gather*} \par
+Un extremo local es un $M$ o $m$ local.
+
+\subsection{Puntos críticos de una función - \emph{PC}}
+$x_0$ es \emph{PC} de $f$ si $x_0 \in Dom(f)$ y
+\begin{gather*}
+	\text{a)} \ \ \nexists f'(x_0) \qquad \veebar \qquad b) \ \ f'(x_0) = 0
+\end{gather*} \par
+\begin{center}
+	Si $x_0$ es un extremo local $\Rightarrow$ $x_0$ es \emph{PC}
+\end{center}
+
+\subsection{Criterio de la 1ra derivada para extremos locales}
+Sea $f$ continua en $(x_0 - \delta, x_0 + \delta) \ = \ E_{(x_0,\delta)}$, derivable en %
+$(x_0 - \delta, x_0 + \delta) - \{x_0\} \ = \ E^{*}_{(x_0,\delta)}$:
+\begin{gather*}
+	1) \quad f'(x) > 0 \ \ \text{en} \ \ (x_0 - \lambda, x_0), \ \ \text{y} \ \ f'(x) < 0 \ \text{en} \ \ (x_0, x_0 + \lambda) \\
+	\Rightarrow \ x_0 \ \text{es máximo local} \\ \\
+	2) \quad f'(x) < 0 \ \ \text{en} \ \ (x_0 - \lambda, x_0), \ \ \text{y} \ \ f'(x) > 0 \ \text{en} \ \ (x_0, x_0 + \lambda) \\
+	\Rightarrow \ x_0 \ \text{es mínimo local}
+\end{gather*}
+\begin{center}
+	\footnotesize(nunca está de más hacer la recta con las flechas de creciendo y de decreciendo, representando %
+	el signo de la derivada a ambos lados del $x_0$)
+\end{center}
+	 
+\subsection{Concavidad}
+\littleTitle{Teorema} \par
+Sea $f: (a,b) \to \mathbb{R}$ dos veces derivable:
+\begin{gather*}
+	1) \quad f''(x) > 0 \quad \forall x \in (a,b,) \ \Rightarrow \ gr(f) \ \text{es cóncavo positivo; es $\cup$}. \\ \\ 
+	2) \quad f''(x) < 0 \quad \forall x \in (a,b,) \ \Rightarrow \ gr(f) \ \text{es cóncavo negativo; es $\cap$}
+\end{gather*}
+\begin{center}
+	\footnotesize (de ser necesario, usar \hyperref[ctb]{\emph{C.T.B.}} para asegurar signos de $f''$)
+\end{center}
+
+\subsection{Puntos de inflexión - \emph{P.Inf.}}
+$(x_0, f(x_0))$ es \emph{P.Inf.} del $gr(f)$ si
+\begin{itemize}
+	\item $f$ es continua en $x_0 \in Dom(f)$
+	\item $gr(f)$ tiene \emph{concavidad distinta} a ambos lados del probable \emph{P.Inf.}
+\end{itemize}
+\littleTitle{Observación} \par
+Por como está definido el \emph{P.Inf.}, puede ocurrir que $\nexists f''(x_0)$ y/o $\nexists f'(x_0)$
+
+\subsection{Criterio de la 2da derivada para extremos}
+Sea $f$ dos veces derivable en $x_0$:
+\begin{gather*}
+	1) \quad f'(x_0) = 0 \quad \land \quad \overbrace{f''(x_0) > 0}^{c\acute{o}nc. +} \qquad \Rightarrow \quad m %
+	\ \text{local en} \ x_0 \\ \\
+	2) \quad f'(x_0) = 0 \quad \land \quad \underbrace{f''(x_0) < 0}_{c\acute{o}nc. -} \qquad \Rightarrow \quad M %
+	\ \text{local en} \ x_0
+\end{gather*}
+\begin{center}
+	\footnotesize{(regla que no aplica si $f''(x_0) = 0 \quad \lor \quad \nexists f''(x_0)$; en estos casos, %
+	puede o no $\exists$ extremo)}
+\end{center}
+
+\subsection{Optimización de funciones}
+\subsubsection{Conceptos}
+\begin{itemize}
+	\item \underline{$S$, supremo:} toda la $Im(f)$ es $\leq$ al $S$; $S \in cod{f}, \ S \in \mathbb{R}, \ S \neq \infty$.
+	\item \underline{$M$, máximo:} si $S \in Im(f) \ \Rightarrow \ \text{es} \ M$.
+	\item \underline{$i$, ínfimo:} toda la $Im(f)$ es $geq$ al $i$; $i \in cod(f), \ i \in \mathbb{R}, \ i \neq \infty$.
+	\item \underline{$m$, mínimo:} si $i \in Im(f) \ \Rightarrow \ \text{es} \ m$.
+\end{itemize}
+
+\subsubsection{Análisis en funciones definidas en un intervalo cerrado}
+\begin{center}
+	$f: [a,b] = I \to R$
+\end{center} \par
+Por \hyperref[tw]{\emph{Weierstrass}}, ya se sabe que $\exists m$ y $\exists M$.
+\begin{itemize}
+	\item[1°] Los extremos de $f$ están en $a \ \lor \ b \ \lor \in (a,b)$
+	\item[2°] Si están en $(a,b)$, el extremo ocurre en un \emph{PC}.
+	\item[3°] Comparar $f(a)$ con $f(b)$ con $f(x_0)$, siendo $x_0$ cada \emph{PC}. El mayor valor será $M$, %
+	el menor será $m$.
+\end{itemize}
+
+\subsubsection{Análisis en funciones definidas en un intervalo genérico}
+\begin{center}
+	$f: I \to R$, $f$ continua, $I \subseteq \mathbb{R}$, $I$ un intervalo
+\end{center} \par
+\littleTitle{Premisas} \par
+\begin{itemize}
+	\item $a < b$ son extremos de $I$, $a \in \mathbb{R}$ o $a = -\infty$, $b \in \mathbb{R}$ o $b = +\infty$
+	\item $a,b \in I$ o $a,b \notin I$ (o las otras dos posibilidades)
+	\item $\commLim{x}{a^+} f(x) = L_a, \ L_a \in \mathbb{R} \quad \lor \quad L_a = \pm \infty$
+	\item $\commLim{x}{b^-} f(x) = L_b, \ L_b \in \mathbb{R} \quad \lor \quad L_b = \pm \infty$
+\end{itemize}
+Entonces, se tiene 2 casos:
+\begin{itemize}
+	\item[1°] $\quad L_a = \ \stackrel{-\infty}{+\infty} \quad \lor \quad L_b = \ \stackrel{-\infty}{+\infty} \qquad \Rightarrow \quad \stackrel{\nexists i}{\nexists S} \quad \Rightarrow \quad \stackrel{\nexists m}{\nexists M}$
+	\item[2°] $\quad L_a \neq \ \stackrel{-\infty}{+\infty} \quad \land \quad L_b \neq \ \stackrel{-\infty}{+\infty}$, comparar $L_a$ con $L_b$ con $f$ evaluada en cada \emph{PC}. El $\stackrel{\text{menor}}{\text{mayor}}$ será el $\stackrel{i}{S}$. Si $\stackrel{i}{S} \ \in Im(f) \ \Rightarrow \ $ es $\stackrel{m}{M}$. 
+\end{itemize}
 
 \vspace{1cm}
 \section{Polinomios de Taylor}
@@ -590,16 +732,19 @@ Sean $f$ y $g$ derivables en $E^{*}_{(a,r)} = (a - r, a + r) - \{a\}$, y
 \vspace{1cm}
 \section{Aplicaciones de la Integral}
 
-\newpage
-\appendix
-\begin{appendices}
-	\section{Trigonometría 1}
-	\clearpage
-	\includepdf[pages=-]{Trig_Cheat_Sheet.pdf}
-	\section{Trigonometría 2}
-	\clearpage
-	\includepdf[pages=-]{FormulaSheet.pdf}
-\end{appendices}
+\ifbool{DEBUG}{
+	
+}{
+	\newpage
+	\appendix
+	\begin{appendices}
+		\includepdf[pages={1},pagecommand=\section{Trigonometría 1}]{Trig_Cheat_Sheet.pdf}
+		\includepdf[pages={2,3,4}]{Trig_Cheat_Sheet.pdf}
+		\includepdf[pages={1},pagecommand=\section{Trigonometría 2}]{FormulaSheet.pdf}
+	\end{appendices}
+}
+
+
 
 
 \end{document}
